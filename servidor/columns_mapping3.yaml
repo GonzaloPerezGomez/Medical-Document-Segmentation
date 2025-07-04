@@ -1,0 +1,87 @@
+columns:
+  1:
+    models:
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/CodiEsp/public/best_model"
+        task: "ner"
+      - model_name_or_path: "home/shared/esperimentuak/GonzaloP/best_models/DisTEMIST/public/best_model"
+        task: "ner"
+      - model_name_or_path: "/ikerlariak/igoenaga006/EDHIA/SEPIA/models/Negation_Model"
+        task: "ner"
+        
+
+  2:
+    models:
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/DisTEMIST/public/best_model"
+        task: "ner"
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/CodiEsp/public/best_model"
+        task: "ner"
+      - model_name_or_path: "/ikerlariak/igoenaga006/EDHIA/SEPIA/models/Negation_Model"
+        task: "ner"
+
+  3:
+    models:
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/DisTEMIST/public/best_model"
+        task: "ner"
+      - model_name_or_path: "/ikerlariak/igoenaga006/EDHIA/SEPIA/models/Negation_Model"
+        task: "ner"
+
+  4:
+    models:
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/MEDDOPROF/subtrack1-ner/public/best_model"
+        task: "ner"
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/MedProcNER/public/best_model"
+        task: "ner"
+      - model_name_or_path: "/ikerlariak/igoenaga006/EDHIA/SEPIA/models/Negation_Model"
+        task: "ner"
+
+  5:
+    models:
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/PharmacoNER/Full_Cases/public/best_model"
+        task: "ner"
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/CodiEsp/public/best_model"
+        task: "ner"
+      - model_name_or_path: "/ikerlariak/igoenaga006/EDHIA/SEPIA/models/Negation_Model"
+        task: "ner"
+
+  6:
+    models:
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/CodiEsp/public/best_model"
+        task: "ner"
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/DisTEMIST/public/best_model"
+        task: "ner"
+
+  7:
+    models:
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/DisTEMIST/public/best_model"
+        task: "ner"
+
+  8:
+    models:
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/DisTEMIST/public/best_model"
+        task: "ner"
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/CodiEsp/public/best_model"
+        task: "ner"
+
+  9:
+    models:
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/CodiEsp/public/best_model"
+        task: "ner"
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/DisTEMIST/public/best_model"
+        task: "ner"
+
+  10:
+    models:
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/MedProcNER/public/best_model"
+        task: "ner"
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/DisTEMIST/public/best_model"
+        task: "ner"
+
+  11:
+    models:
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/ClinAIS/public/"
+        task: "ner"
+
+defaults:
+  text_separator: "\n"
+  skip_empty: true
+

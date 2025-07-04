@@ -1,0 +1,10 @@
+columns:
+  1:
+    models:
+      - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/ClinAIS/public/"
+        task: "ner"
+
+defaults:
+  text_separator: "\n"
+  skip_empty: true
+
