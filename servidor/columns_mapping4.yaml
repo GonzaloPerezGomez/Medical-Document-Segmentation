@@ -1,0 +1,27 @@
+
+models:
+  - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/CodiEsp/public/best_model"
+    task: "ner"
+
+  - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/DisTEMIST/public/best_model"
+    task: "ner"
+
+  - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/Negation_Model"
+    task: "ner"
+
+  - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/MEDDOPROF/subtrack1-ner/public/best_model"
+    task: "ner"
+
+  - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/MedProcNER/public/best_model"
+    task: "ner"
+
+  - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/PharmacoNER/Full_Cases/public/best_model"
+    task: "ner"
+
+  - model_name_or_path: "/home/shared/esperimentuak/GonzaloP/best_models/ClinAIS/public/"
+    task: "ner"
+
+defaults:
+  text_separator: "\n"
+  skip_empty: true
+

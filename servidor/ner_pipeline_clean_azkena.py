@@ -23,20 +23,20 @@ def get_column_names_from_excel(excel_path: Path):
 def load_config(path):
     with open(path, "r") as f:
         cfg = yaml.safe_load(f)
-    cols = {int(k): v for k, v in cfg.get("columns", {}).items()}
+    models = cfg.get("models")
     defaults = cfg.get("defaults", {})
     sep = defaults.get("text_separator", "\n")
     skip_empty = defaults.get("skip_empty", True)
-    return cols, sep, skip_empty
+    return models, sep, skip_empty
 
 
-def load_pipelines(columns_cfg):
+def load_pipelines(models: list):
     logging.info("Cargando modelos y tokenizadores NER...")
     pipes = {}
-    for idx, params in columns_cfg.items():
-        model_path: str = params.get("models")[0]["model_name_or_path"]
-        task = params.get("task", "ner")
-        logging.info(f"  - Columna {idx}: {model_path} ({task})")
+    for idx, model in enumerate(models):
+        model_path: str = model["model_name_or_path"]
+        task = model.get("task", "ner")
+        logging.info(f"  - Modelo {idx}: {model_path} ({task})")
         tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=True)
         model = AutoModelForTokenClassification.from_pretrained(model_path)
         pipes[idx] = pipeline(
@@ -49,7 +49,7 @@ def load_pipelines(columns_cfg):
     return pipes
 
 
-def process_file(path_txt: Path, pipelines, columns_cfg, sep, skip_empty, out_dir: Path):
+def process_file(path_txt: Path, pipelines, models, sep, skip_empty, out_dir: Path):
     # Leer datos con encabezado en la segunda fila para inferencia NER
     with open(path_txt, "r") as txt:
         name = txt.name.split("/")[-1].split(".txt")[0]
@@ -64,7 +64,7 @@ def process_file(path_txt: Path, pipelines, columns_cfg, sep, skip_empty, out_di
 
     ent_counter = 1
     with open(ann_path, 'w', encoding='utf-8') as ann_f:
-        for idx, params in columns_cfg.items():
+        for idx, params in enumerate(models):
             #if idx >= len(excel_cols):
             #    logging.warning(f"{base}: la columna {idx} no existe, se salta.")
             #    continue
@@ -153,13 +153,13 @@ def main():
     output_dir.mkdir(parents=True, exist_ok=True)
 
 
-    columns_cfg, sep, skip_empty = load_config(config_path)
-    pipelines = load_pipelines(columns_cfg)
+    models, sep, skip_empty = load_config(config_path)
+    pipelines = load_pipelines(models)
 
     # Procesar Excels y generar .ann inicial
     for txt in sorted(input_dir.glob("*.txt")):
         logging.info(f"Procesando {txt.name} …")
-        process_file(txt, pipelines, columns_cfg, sep, skip_empty, output_dir)
+        process_file(txt, pipelines, models, sep, skip_empty, output_dir)
 
     # Limpiar y renombrar .ann
     """for ann_path in sorted(output_dir.glob("*.ann")):
